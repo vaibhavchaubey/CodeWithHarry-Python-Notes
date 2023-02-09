@@ -2287,6 +2287,1972 @@ number:  7
 Factorial:  5040
 ```
 
+<br>
+
+# Day 31 - Sets in Python
+# Python Sets
+Sets are unordered collection of data items. They store multiple items in a single variable. Set items are separated by commas and enclosed within curly brackets {}. Sets are unchangeable, meaning you cannot change items of the set once created. Sets do not contain duplicate items.
+
+
+
+#### Example:
+```python
+info = {"Carla", 19, False, 5.9, 19}
+print(info)
+```
+#### Output:
+```
+{False, 19, 5.9, 'Carla'}
+ ```
+
+Here we see that the items of set occur in random order and hence they cannot be accessed using index numbers. Also sets do not allow duplicate values.
+
+ **Quick Quiz:** Try to create an empty set. Check using the type() function whether the type of your variable is a set
+
+## Accessing set items:
+ 
+
+### Using a For loop
+You can access items of set using a for loop. 
+
+#### Example:
+```python
+info = {"Carla", 19, False, 5.9}
+for item in info:
+    print(item)
+  ```
+#### Output:
+```
+False
+Carla
+19
+5.9
+```
+
+<br>
+
+# Day 32 - Set Methods in Python
+# Joining Sets
+Sets in python more or less work in the same way as sets in mathematics. We can perform operations like union and intersection on the sets just like in mathematics.
+
+ 
+
+## I. union() and update():
+The union() and update() methods prints all items that are present in the two sets. The union() method returns a new set whereas update() method adds item into the existing set from another set.
+
+#### Example:
+```python
+cities = {"Tokyo", "Madrid", "Berlin", "Delhi"}
+cities2 = {"Tokyo", "Seoul", "Kabul", "Madrid"}
+cities3 = cities.union(cities2)
+print(cities3)
+```
+#### Output:
+```
+{'Tokyo', 'Madrid', 'Kabul', 'Seoul', 'Berlin', 'Delhi'}
+ ```
+
+#### Example:
+```python
+cities = {"Tokyo", "Madrid", "Berlin", "Delhi"}
+cities2 = {"Tokyo", "Seoul", "Kabul", "Madrid"}
+cities.update(cities2)
+print(cities)
+```
+#### Output:
+```
+{'Berlin', 'Madrid', 'Tokyo', 'Delhi', 'Kabul', 'Seoul'} 
+ 
+```
+## II. intersection and intersection_update():
+The intersection() and intersection_update() methods prints only items that are similar to both the sets. The intersection() method returns a new set whereas intersection_update() method updates into the existing set from another set.
+
+#### Example:
+```python
+cities = {"Tokyo", "Madrid", "Berlin", "Delhi"}
+cities2 = {"Tokyo", "Seoul", "Kabul", "Madrid"}
+cities3 = cities.intersection(cities2)
+print(cities3)
+```
+#### Output:
+```
+{'Madrid', 'Tokyo'}
+ ```
+
+#### Example :
+```python
+cities = {"Tokyo", "Madrid", "Berlin", "Delhi"}
+cities2 = {"Tokyo", "Seoul", "Kabul", "Madrid"}
+cities.intersection_update(cities2)
+print(cities)
+```
+#### Output:
+```
+{'Tokyo', 'Madrid'}
+```
+
+## III. symmetric_difference and symmetric_difference_update():
+The symmetric_difference() and symmetric_difference_update() methods prints only items that are not similar to both the sets. The symmetric_difference() method returns a new set whereas symmetric_difference_update() method updates into the existing set from another set.
+
+#### Example:
+```python
+cities = {"Tokyo", "Madrid", "Berlin", "Delhi"}
+cities2 = {"Tokyo", "Seoul", "Kabul", "Madrid"}
+cities3 = cities.symmetric_difference(cities2)
+print(cities3)
+```
+#### Output:
+```
+{'Seoul', 'Kabul', 'Berlin', 'Delhi'}
+ ```
+
+#### Example:
+```python
+cities = {"Tokyo", "Madrid", "Berlin", "Delhi"}
+cities2 = {"Tokyo", "Seoul", "Kabul", "Madrid"}
+cities.symmetric_difference_update(cities2)
+print(cities)
+```
+#### Output:
+```
+{'Kabul', 'Delhi', 'Berlin', 'Seoul'}
+ ```
+
+## IV. difference() and difference_update():
+The difference() and difference_update() methods prints only items that are only present in the original set and not in both the sets. The difference() method returns a new set whereas difference_update() method updates into the existing set from another set.
+
+#### Example:
+```python
+cities = {"Tokyo", "Madrid", "Berlin", "Delhi"}
+cities2 = {"Seoul", "Kabul", "Delhi"}
+cities3 = cities.difference(cities2)
+print(cities3)
+```
+#### Output:
+```
+{'Tokyo', 'Madrid', 'Berlin'}
+ ```
+
+#### Example:
+```python
+cities = {"Tokyo", "Madrid", "Berlin", "Delhi"}
+cities2 = {"Seoul", "Kabul", "Delhi"}
+print(cities.difference(cities2))
+```
+#### Output:
+```
+{'Tokyo', 'Berlin', 'Madrid'}
+```
+# Set Methods
+There are several in-built methods used for the manipulation of set.They are explained below
+## isdisjoint():
+The isdisjoint() method checks if items of given set are present in another set. This method returns False if items are present, else it returns True.
+
+#### Example:
+```python
+cities = {"Tokyo", "Madrid", "Berlin", "Delhi"}
+cities2 = {"Tokyo", "Seoul", "Kabul", "Madrid"}
+print(cities.isdisjoint(cities2))
+```
+#### Output:
+
+False
+
+
+## issuperset():
+The issuperset() method checks if all the items of a particular set are present in the original set. It returns True if all the items are present, else it returns False.
+
+#### Example:
+```python
+cities = {"Tokyo", "Madrid", "Berlin", "Delhi"}
+cities2 = {"Seoul", "Kabul"}
+print(cities.issuperset(cities2))
+cities3 = {"Seoul", "Madrid","Kabul"}
+print(cities.issuperset(cities3))
+```
+#### Output:
+
+False\
+False
+
+## issubset():
+The issubset() method checks if all the items of the original set are present in the particular set. It returns True if all the items are present, else it returns False.
+
+#### Example:
+```python
+cities = {"Tokyo", "Madrid", "Berlin", "Delhi"}
+cities2 = {"Delhi", "Madrid"}
+print(cities2.issubset(cities))
+```
+#### Output:
+
+True
+# add()
+If you want to add a single item to the set use the add() method.
+
+#### Example:
+```python
+cities = {"Tokyo", "Madrid", "Berlin", "Delhi"}
+cities.add("Helsinki")
+print(cities)
+```
+#### Output:
+
+{'Tokyo', 'Helsinki', 'Madrid', 'Berlin', 'Delhi'}
+ 
+## update()
+If you want to add more than one item, simply create another set or any other iterable object(list, tuple, dictionary), and use the update() method to add it into the existing set.
+
+#### Example:
+```python
+cities = {"Tokyo", "Madrid", "Berlin", "Delhi"}
+cities2 = {"Helsinki", "Warsaw", "Seoul"}
+cities.update(cities2)
+print(cities)
+```
+#### Output:
+
+{'Seoul', 'Berlin', 'Delhi', 'Tokyo', 'Warsaw', 'Helsinki', 'Madrid'}
+ 
+
+ 
+
+# remove()/discard()
+We can use remove() and discard() methods to remove items form list.
+
+#### Example :
+```python
+cities = {"Tokyo", "Madrid", "Berlin", "Delhi"}
+cities.remove("Tokyo")
+print(cities)
+```
+#### Output:
+
+{'Delhi', 'Berlin', 'Madrid'}
+ 
+
+ 
+
+The main difference between remove and discard is that, if we try to delete an item which is not present in set, then remove() raises an error, whereas discard() does not raise any error.
+
+#### Example:
+```python
+cities = {"Tokyo", "Madrid", "Berlin", "Delhi"}
+cities.remove("Seoul")
+print(cities)
+```
+#### Output:
+
+KeyError: 'Seoul' 
+
+# pop()
+This method removes the last item of the set but the catch is that we don’t know which item gets popped as sets are unordered. However, you can access the popped item if you assign the pop() method to a variable.
+
+#### Example:
+```python
+cities = {"Tokyo", "Madrid", "Berlin", "Delhi"}
+item = cities.pop()
+print(cities)
+print(item)
+```
+#### Output:
+
+{'Tokyo', 'Delhi', 'Berlin'}
+Madrid
+ 
+
+## del
+del is not a method, rather it is a keyword which deletes the set entirely.
+
+#### Example:
+```python
+cities = {"Tokyo", "Madrid", "Berlin", "Delhi"}
+del cities
+print(cities)
+```
+#### Output:
+
+NameError: name 'cities' is not defined 
+We get an error because our entire set has been deleted and there is no variable called cities which contains a set.
+
+ 
+
+What if we don’t want to delete the entire set, we just want to delete all items within that set?
+
+ 
+
+## clear():
+This method clears all items in the set and prints an empty set.
+
+#### Example:
+```python
+cities = {"Tokyo", "Madrid", "Berlin", "Delhi"}
+cities.clear()
+print(cities)
+```
+#### Output:
+
+set()
+ 
+
+## Check if item exists
+You can also check if an item exists in the set or not.
+
+##### Example
+```python
+info = {"Carla", 19, False, 5.9}
+if "Carla" in info:
+    print("Carla is present.")
+else:
+    print("Carla is absent.")
+  ```
+#### Output:
+
+Carla is present.
+
+<br> 
+
+# Day 33 - Dictionaries in Python
+# Python Dictionaries
+Dictionaries are ordered collection of data items. They store multiple items in a single variable. Dictionary items are key-value pairs that are separated by commas and enclosed within curly brackets {}.
+
+ 
+
+#### Example:
+```python
+info = {'name':'Karan', 'age':19, 'eligible':True}
+print(info)
+```
+#### Output:
+```
+{'name': 'Karan', 'age': 19, 'eligible': True}
+```
+## Accessing Dictionary items:
+ 
+
+### I. Accessing single values:
+Values in a dictionary can be accessed using keys. We can access dictionary values by mentioning keys either in square brackets or by using get method.
+
+#### Example:
+```python
+info = {'name':'Karan', 'age':19, 'eligible':True}
+print(info['name'])
+print(info.get('eligible'))
+```
+#### Output:
+```
+Karan
+True
+ ```
+
+### II. Accessing multiple values:
+We can print all the values in the dictionary using values() method.
+
+#### Example:
+```python
+info = {'name':'Karan', 'age':19, 'eligible':True}
+print(info.values())
+```
+#### Output:
+```
+dict_values(['Karan', 19, True])
+ ```
+
+### III. Accessing keys:
+We can print all the keys in the dictionary using keys() method.
+
+#### Example:
+```python
+info = {'name':'Karan', 'age':19, 'eligible':True}
+print(info.keys())
+```
+#### Output:
+```
+dict_keys(['name', 'age', 'eligible'])
+ ```
+
+### IV. Accessing key-value pairs:
+We can print all the key-value pairs in the dictionary using items() method.
+
+#### Example:
+```python
+info = {'name':'Karan', 'age':19, 'eligible':True}
+print(info.items())
+```
+#### Output:
+```
+dict_items([('name', 'Karan'), ('age', 19), ('eligible', True)])
+```
+
+<br>
+
+# Day 34 - Dictionary Methods in Python
+# Dictionary Methods
+Dictionary uses several built-in methods for manipulation.They are listed below
+## update() 
+The update() method updates the value of the key provided to it if the item already exists in the dictionary, else it creates a new key-value pair.
+
+#### Example:
+```python
+info = {'name':'Karan', 'age':19, 'eligible':True}
+print(info)
+info.update({'age':20})
+info.update({'DOB':2001})
+print(info)
+```
+#### Output:
+```
+{'name': 'Karan', 'age': 19, 'eligible': True}
+{'name': 'Karan', 'age': 20, 'eligible': True, 'DOB': 2001}
+ ```
+
+ 
+
+## Removing items from dictionary:
+There are a few methods that we can use to remove items from dictionary.
+
+ 
+
+### clear():
+The clear() method removes all the items from the list. 
+#### Example:
+```python
+info = {'name':'Karan', 'age':19, 'eligible':True}
+info.clear()
+print(info)
+```
+#### Output:
+```
+{}
+ ```
+
+#### pop():
+The pop() method removes the key-value pair whose key is passed as a parameter.
+#### Example:
+```python
+info = {'name':'Karan', 'age':19, 'eligible':True}
+info.pop('eligible')
+print(info)
+```
+#### Output:
+```
+{'name': 'Karan', 'age': 19}
+ ```
+
+### popitem(): 
+The popitem() method removes the last key-value pair from the dictionary.
+#### Example:
+```python
+info = {'name':'Karan', 'age':19, 'eligible':True, 'DOB':2003}
+info.popitem()
+print(info)
+```
+#### Output:
+```
+{'name': 'Karan', 'age': 19, 'eligible': True}
+ ```
+
+### del:
+we can also use the del keyword to remove a dictionary item. 
+
+#### Example:
+```python
+info = {'name':'Karan', 'age':19, 'eligible':True, 'DOB':2003}
+del info['age']
+print(info)
+```
+#### Output:
+```
+{'name': 'Karan', 'eligible': True, 'DOB': 2003}
+ ```
+
+If key is not provided, then the del keyword will delete the dictionary entirely.
+
+#### Example:
+```python
+info = {'name':'Karan', 'age':19, 'eligible':True, 'DOB':2003}
+del info
+print(info)
+```
+#### Output:
+```
+NameError: name 'info' is not defined
+```
+
+<br>
+
+# Day 35 - for Loop with else in Python
+# Python - else in Loop
+As you have learned before, the else clause is used along with the if statement.
+
+Python allows the else keyword to be used with the for and while loops too. The else block appears after the body of the loop. The statements in the else block will be executed after all iterations are completed. The program exits the loop only after the else block is executed.
+## Syntax
+```
+for counter in sequence:
+    #Statements inside for loop block
+else:
+    #Statements inside else block
+```
+## Example:
+```
+for x in range(5):
+    print ("iteration no {} in for loop".format(x+1))
+else:
+    print ("else block in loop")
+print ("Out of loop")
+```
+## Output:
+```
+iteration no 1 in for loop
+iteration no 2 in for loop
+iteration no 3 in for loop
+iteration no 4 in for loop
+iteration no 5 in for loop
+else block in loop
+Out of loop
+```
+
+<br>
+
+# Day 36 - Exception Handling in Python
+Exception handling is the process of responding to unwanted or unexpected events when a computer program runs. Exception handling deals with these events to avoid the program or system crashing, and without this process, exceptions would disrupt the normal operation of a program.
+# Exceptions in Python
+Python has many built-in exceptions that are raised when your program encounters an error (something in the program goes wrong).
+
+When these exceptions occur, the Python interpreter stops the current process and passes it to the calling process until it is handled. If not handled, the program will crash.
+
+# Python try...except
+try….. except blocks are used in python to handle errors and exceptions. The code in try block runs when there is no error. If the try block catches the error, then the except block is executed. 
+
+ ## Syntax:
+ ```python
+ try:
+      #statements which could generate 
+      #exception
+except:
+      #Soloution of generated exception
+```
+## Example:
+```python
+try:
+    num = int(input("Enter an integer: "))
+except ValueError:
+    print("Number entered is not an integer.")
+ ```
+
+## Output:
+```
+Enter an integer: 6.022
+Number entered is not an integer.
+```
+
+<br>
+
+# Day 37 - Finally keyword in Python
+# Finally Clause
+The finally code block is also a part of exception handling. When we handle exception using the try and except block, we can include a finally block at the end. The finally block is always executed, so it is generally used for doing the concluding tasks like closing file resources or closing database connection or may be ending the program execution with a delightful message.
+# Syntax:
+```
+try:
+   #statements which could generate 
+   #exception
+except:
+   #solution of generated exception
+finally:
+    #block of code which is going to 
+    #execute in any situation
+    
+   
+```
+The finally block is executed irrespective of the outcome of try……except…..else blocks\
+One of the important use cases of finally block is in a function which returns a value.
+# Example:
+```python
+try:
+    num = int(input("Enter an integer: "))
+except ValueError:
+    print("Number entered is not an integer.")
+else:
+    print("Integer Accepted.")
+finally:
+    print("This block is always executed.")
+ ```
+
+## Output 1:
+```
+Enter an integer: 19
+Integer Accepted.
+This block is always executed.
+```
+## Output 2:
+```
+Enter an integer: 3.142
+Number entered is not an integer.
+This block is always executed.
+```
+
+<br>
+
+# Day 38 - Raising Custom errors in Python
+In python, we can raise custom errors by using the `raise`  keyword. 
+```python
+salary = int(input("Enter salary amount: "))
+if not 2000 < salary < 5000:
+    raise ValueError("Not a valid salary")
+```
+
+In the previous tutorial, we learned about different built-in exceptions in Python and why it is important to handle exceptions. However, sometimes we may need to create our own custom exceptions that serve our purpose.
+
+## Defining Custom Exceptions
+In Python, we can define custom exceptions by creating a new class that is derived from the built-in Exception class.
+
+Here's the syntax to define custom exceptions:
+```python
+class CustomError(Exception):
+  # code ...
+  pass
+
+try:
+  # code ...
+
+except CustomError:
+  # code...
+```
+
+This is useful because sometimes we might want to do something when a particular exception is raised. For example, sending an error report to the admin, calling an api, etc.
+
+<br>
+
+# Day 39 - Exercise 3
+Create a program capable of displaying questions to the user like KBC. 
+Use List data type to store the questions and their correct answers.
+Display the final amount the person is taking home after playing the game.
+
+## Solution
+
+```python
+questions = [
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+  [
+    "Which language was used to create fb?", "Python", "French", "JavaScript",
+    "Php", "None", 4
+  ],
+]
+
+levels = [1000, 2000, 3000, 5000, 10000, 20000, 40000, 80000, 160000, 320000]
+money = 0
+for i in range(0, len(questions)):
+  
+  question = questions[i]
+  print(f"\n\nQuestion for Rs. {levels[i]}")
+  print(f"a. {question[1]}          b. {question[2]} ")
+  print(f"c. {question[3]}          d. {question[4]} ")
+  reply = int(input("Enter your answer (1-4) or  0 to quit:\n" ))
+  if (reply == 0):
+    money = levels[i-1]
+    break
+  if(reply == question[-1]):
+    print(f"Correct answer, you have won Rs. {levels[i]}")
+    if(i == 4):
+      money = 10000
+    elif(i == 9):
+      money = 320000
+    elif(i == 14):
+      money = 10000000
+  else:
+    print("Wrong answer!")
+    break 
+
+print(f"Your take home money is {money}")
+```
+
+<br>
+
+# Exercise 4: Secret Code Language
+Write a python program to translate a message into secret code language. Use the rules below to translate normal English into secret code language
+
+Coding:
+if the word contains atleast 3 characters, remove the first letter and append it at the end
+  now append three random characters at the starting and the end
+else:
+  simply reverse the string
+
+Decoding:
+if the word contains less than 3 characters, reverse it
+else:
+  remove 3 random characters from start and end. Now remove the last letter and append it to the beginning
+
+Your program should ask whether you want to code or decode
+
+<br>
+
+# Day 41 - Short hand if else statements
+## If ... Else in One Line
+There is also a shorthand syntax for the if-else statement that can be used when the condition being tested is simple and the code blocks to be executed are short. Here's an example:
+```python
+a = 2
+b = 330
+print("A") if a > b else print("B")
+```
+
+You can also have multiple else statements on the same line:
+
+## Example
+One line if else statement, with 3 conditions:
+```python
+a = 330
+b = 330
+print("A") if a > b else print("=") if a == b else print("B")
+```
+
+## Another Example
+```python
+result = value_if_true if condition else value_if_false
+
+```
+
+This syntax is equivalent to the following if-else statement:
+```python
+if condition:
+    result = value_if_true
+else:
+    result = value_if_false
+
+```
+## Conclusion
+The shorthand syntax can be a convenient way to write simple if-else statements, especially when you want to assign a value to a variable based on a condition. \
+However, it's not suitable for more complex situations where you need to execute multiple statements or perform more complex logic. In those cases, it's best to use the full if-else syntax.
+
+<br>
+
+# Day 42 - Enumerate function in python
+The enumerate function is a built-in function in Python that allows you to loop over a sequence (such as a list, tuple, or string) and get the index and value of each element in the sequence at the same time. Here's a basic example of how it works:
+```python
+# Loop over a list and print the index and value of each element
+fruits = ['apple', 'banana', 'mango']
+for index, fruit in enumerate(fruits):
+    print(index, fruit)
+
+```
+
+The output of this code will be:
+
+```python
+0 apple
+1 banana
+2 mango
+
+```
+As you can see, the enumerate function returns a tuple containing the index and value of each element in the sequence. You can use the for loop to unpack these tuples and assign them to variables, as shown in the example above.
+# Changing the start index
+By default, the enumerate function starts the index at 0, but you can specify a different starting index by passing it as an argument to the enumerate function:
+
+
+```python
+# Loop over a list and print the index (starting at 1) and value of each element
+fruits = ['apple', 'banana', 'mango']
+for index, fruit in enumerate(fruits, start=1):
+    print(index, fruit)
+
+```
+
+This will output:
+```python
+1 apple
+2 banana
+3 mango
+
+```
+
+The enumerate function is often used when you need to loop over a sequence and perform some action with both the index and value of each element. For example, you might use it to loop over a list of strings and print the index and value of each string in a formatted way:
+
+```python
+fruits = ['apple', 'banana', 'mango']
+for index, fruit in enumerate(fruits):
+    print(f'{index+1}: {fruit}')
+
+```
+This will output:
+```python
+1: apple
+2: banana
+3: mango
+
+```
+
+In addition to lists, you can use the enumerate function with any other sequence type in Python, such as tuples and strings. Here's an example with a tuple:
+
+```python
+# Loop over a tuple and print the index and value of each element
+colors = ('red', 'green', 'blue')
+for index, color in enumerate(colors):
+    print(index, color)
+
+```
+And here's an example with a string:
+```python
+# Loop over a string and print the index and value of each character
+s = 'hello'
+for index, c in enumerate(s):
+    print(index, c)
+
+```
+
+<br>
+
+# Day 43 - Virtual Environment in Python
+A virtual environment is a tool used to isolate specific Python environments on a single machine, allowing you to work on multiple projects with different dependencies and packages without conflicts. This can be especially useful when working on projects that have conflicting package versions or packages that are not compatible with each other.
+
+To create a virtual environment in Python, you can use the venv module that comes with Python. Here's an example of how to create a virtual environment and activate it:
+
+```python
+# Create a virtual environment
+python -m venv myenv
+
+# Activate the virtual environment (Linux/macOS)
+source myenv/bin/activate
+
+# Activate the virtual environment (Windows)
+myenv\Scripts\activate.bat
+```
+Once the virtual environment is activated, any packages that you install using pip will be installed in the virtual environment, rather than in the global Python environment. This allows you to have a separate set of packages for each project, without affecting the packages installed in the global environment.
+
+To deactivate the virtual environment, you can use the deactivate command:
+ ```python
+# Deactivate the virtual environment
+deactivate
+
+```
+## The "requirements.txt" file
+In addition to creating and activating a virtual environment, it can be useful to create a requirements.txt file that lists the packages and their versions that your project depends on. This file can be used to easily install all the required packages in a new environment.
+
+To create a requirements.txt file, you can use the pip freeze command, which outputs a list of installed packages and their versions. For example:
+
+```python
+# Output the list of installed packages and their versions to a file
+pip freeze > requirements.txt
+``` 
+To install the packages listed in the requirements.txt file, you can use the pip install command with the -r flag:
+
+```python
+# Install the packages listed in the requirements.txt file
+pip install -r requirements.txt
+```
+Using a virtual environment and a requirements.txt file can help you manage the dependencies for your Python projects and ensure that your projects are portable and can be easily set up on a new machine.
+ 
+ <br>
+ 
+ # Day 44 - How import works in Python
+## How importing in python works
+Importing in Python is the process of loading code from a Python module into the current script. This allows you to use the functions and variables defined in the module in your current script, as well as any additional modules that the imported module may depend on.
+
+To import a module in Python, you use the import statement followed by the name of the module. For example, to import the math module, which contains a variety of mathematical functions, you would use the following statement:
+
+```python
+import math
+```
+Once a module is imported, you can use any of the functions and variables defined in the module by using the dot notation. For example, to use the sqrt function from the math module, you would write:
+
+```python
+import math
+
+result = math.sqrt(9)
+print(result)  # Output: 3.0
+```
+
+## from keyword
+You can also import specific functions or variables from a module using the from keyword. For example, to import only the sqrt function from the math module, you would write:
+
+```python
+from math import sqrt
+
+result = sqrt(9)
+print(result)  # Output: 3.0
+```
+You can also import multiple functions or variables at once by separating them with a comma:
+
+```python
+from math import sqrt, pi
+
+result = sqrt(9)
+print(result)  # Output: 3.0
+
+print(pi)  # Output: 3.141592653589793
+```
+
+## importing everything
+It's also possible to import all functions and variables from a module using the * wildcard. However, this is generally not recommended as it can lead to confusion and make it harder to understand where specific functions and variables are coming from.
+
+```python
+from math import *
+
+result = sqrt(9)
+print(result)  # Output: 3.0
+
+print(pi)  # Output: 3.141592653589793
+```
+Python also allows you to rename imported modules using the as keyword. This can be useful if you want to use a shorter or more descriptive name for a module, or if you want to avoid naming conflicts with other modules or variables in your code.
+
+## The "as" keyword
+```python
+import math as m
+
+result = m.sqrt(9)
+print(result)  # Output: 3.0
+
+print(m.pi)  # Output: 3.141592653589793
+```
+## The dir function
+Finally, Python has a built-in function called dir that you can use to view the names of all the functions and variables defined in a module. This can be helpful for exploring and understanding the contents of a new module.
+
+```python
+import math
+
+print(dir(math))
+```
+This will output a list of all the names defined in the math module, including functions like sqrt and pi, as well as other variables and constants.
+
+In summary, the import statement in Python allows you to access the functions and variables defined in a module from within your current script. You can import the entire module, specific functions or variables, or use the * wildcard to import everything. You can also use the as keyword to rename a module, and the dir function to view the contents of a module.
+
+<br>
+
+# Day 45 -  `if "__name__ == "__main__"` in Python
+The if `__name__ == "__main__"` idiom is a common pattern used in Python scripts to determine whether the script is being run directly or being imported as a module into another script.
+
+In Python, the `__name__` variable is a built-in variable that is automatically set to the name of the current module. When a Python script is run directly, the `__name__` variable is set to the string `__main__` When the script is imported as a module into another script, the `__name__` variable is set to the name of the module.
+
+Here's an example of how the if `__name__` == `__main__` idiom can be used:
+
+```python
+def main():
+    # Code to be run when the script is run directly
+    print("Running script directly")
+
+if __name__ == "__main__":
+    main()
+```
+In this example, the main function contains the code that should be run when the script is run directly. The if statement at the bottom checks whether the `__name__` variable is equal to `__main__`. If it is, the main function is called.
+## Why is it useful?
+This idiom is useful because it allows you to reuse code from a script by importing it as a module into another script, without running the code in the original script. For example, consider the following script:
+
+```python
+def main():
+    print("Running script directly")
+
+if __name__ == "__main__":
+    main()
+```
+If you run this script directly, it will output "Running script directly". However, if you import it as a module into another script and call the main function from the imported module, it will not output anything:
+
+```python
+import script
+
+script.main()  # Output: "Running script directly"
+```
+This can be useful if you have code that you want to reuse in multiple scripts, but you only want it to run when the script is run directly and not when it's imported as a module.
+
+## Is it a necessity?
+It's important to note that the `if __name__ == "__main__"` idiom is not required to run a Python script. You can still run a script without it by simply calling the functions or running the code you want to execute directly. However, the `if __name__ == "__main__"` idiom can be a useful tool for organizing and separating code that should be run directly from code that should be imported and used as a module.
+
+In summary, the `if __name__ == "__main__"` idiom is a common pattern used in Python scripts to determine whether the script is being run directly or being imported as a module into another script. It allows you to reuse code from a script by importing it as a module into another script, without running the code in the original script.
+
+<br>
+
+
+# Day 46 -  Module in Python
+The os module in Python is a built-in library that provides functions for interacting with the operating system. It allows you to perform a wide variety of tasks, such as reading and writing files, interacting with the file system, and running system commands.
+
+Here are some common tasks you can perform with the os module:
+
+Reading and writing files
+The os module provides functions for opening, reading, and writing files. For example, to open a file for reading, you can use the open function:
+
+```python
+import os
+
+# Open the file in read-only mode
+f = os.open("myfile.txt", os.O_RDONLY)
+
+# Read the contents of the file
+contents = os.read(f, 1024)
+
+# Close the file
+os.close(f)
+```
+To open a file for writing, you can use the os.O_WRONLY flag:
+
+```python
+import os
+
+# Open the file in write-only mode
+f = os.open("myfile.txt", os.O_WRONLY)
+
+# Write to the file
+os.write(f, b"Hello, world!")
+
+# Close the file
+os.close(f)
+```
+## Interacting with the file system
+The os module also provides functions for interacting with the file system. For example, you can use the os.listdir function to get a list of the files in a directory:
+
+```python
+import os
+
+# Get a list of the files in the current directory
+files = os.listdir(".")
+print(files)  # Output: ['myfile.txt', 'otherfile.txt']
+```
+You can also use the os.mkdir function to create a new directory:
+
+```python
+import os
+
+# Create a new directory
+os.mkdir("newdir")
+```
+## Running system commands
+Finally, the os module provides functions for running system commands. For example, you can use the os.system function to run a command and get the output:
+
+```python
+import os
+
+# Run the "ls" command and print the output
+output = os.system("ls")
+print(output)  # Output: ['myfile.txt', 'otherfile.txt']
+```
+You can also use the os.popen function to run a command and get the output as a file-like object:
+
+```python
+import os
+
+# Run the "ls" command and get the output as a file-like object
+f = os.popen("ls")
+
+# Read the contents of the output
+output = f.read()
+print(output)  # Output: ['myfile.txt', 'otherfile.txt']
+
+# Close the file-like object
+f.close()
+```
+In summary, the os module in Python is a built-in library that provides a wide variety of functions for interacting with the operating system. It allows you to perform tasks such as reading and writing files, interacting with the file system, and running system commands.
+
+<br>
+
+# Day 47 - Exercise 4: Solutions
+Write a python program to translate a message into secret code language. Use the rules below to translate normal English into secret code language
+
+Coding:
+if the word contains atleast 3 characters, remove the first letter and append it at the end
+  now append three random characters at the starting and the end
+else:
+  simply reverse the string
+
+Decoding:
+if the word contains less than 3 characters, reverse it
+else:
+  remove 3 random characters from start and end. Now remove the last letter and append it to the beginning
+Your program should ask whether you want to code or decode
+
+```python
+st = input("Enter message")
+words = st.split(" ")
+coding = input("1 for Coding or 0 for Decoding")
+coding = True if (coding=="1") else False
+print(coding)
+if(coding):
+  nwords = []
+  for word in words:
+    if(len(word)>=3):
+      r1 = "dsf"
+      r2 = "jkr"
+      stnew = r1+ word[1:] + word[0] + r2
+      nwords.append(stnew)
+    else:
+      nwords.append(word[::-1])
+  print(" ".join(nwords))
+
+else:
+  nwords = []
+  for word in words:
+    if(len(word)>=3): 
+      stnew = word[3:-3]
+      stnew = stnew[-1] + stnew[:-1]
+      nwords.append(stnew)
+    else:
+      nwords.append(word[::-1])
+  print(" ".join(nwords))
+```
+
+<br>
+
+# Day 48 - Local vs Global Variables in Python
+Before we dive into the differences between local and global variables, let's first recall what a variable is in Python.
+
+A variable is a named location in memory that stores a value. In Python, we can assign values to variables using the assignment operator =. For example:
+```python 
+x = 5
+y = "Hello, World!"
+
+```
+
+Now, let's talk about local and global variables.
+
+A local variable is a variable that is defined within a function and is only accessible within that function. It is created when the function is called and is destroyed when the function returns.
+
+On the other hand, a global variable is a variable that is defined outside of a function and is accessible from within any function in your code.
+
+Here's an example to help clarify the difference:
+```python
+x = 10 # global variable
+
+def my_function():
+  y = 5 # local variable
+  print(y)
+
+my_function()
+print(x)
+print(y) # this will cause an error because y is a local variable and is not accessible outside of the function
+
+```
+In this example, we have a global variable x and a local variable y. We can access the value of the global variable x from within the function, but we cannot access the value of the local variable y outside of the function.
+# The global keyword
+Now, what if we want to modify a global variable from within a function? This is where the global keyword comes in.
+
+The global keyword is used to declare that a variable is a global variable and should be accessed from the global scope. Here's an example:
+```python 
+x = 10 # global variable
+
+def my_function():
+  global x
+  x = 5 # this will change the value of the global variable x
+  y = 5 # local variable
+
+my_function()
+print(x) # prints 5
+print(y) # this will cause an error because y is a local variable and is not accessible outside of the function
+
+```
+
+In this example, we used the global keyword to declare that we want to modify the global variable x from within the function. As a result, the value of x is changed to 5.
+
+It's important to note that it's generally considered good practice to avoid modifying global variables from within functions, as it can lead to unexpected behavior and make your code harder to debug.
+
+I hope this tutorial has helped clarify the differences between local and global variables and how to use the global keyword in Python. Thank you for watching!
+
+<br>
+
+# Day 49 - File IO in Python 
+Python provides several ways to manipulate files. Today, we will discuss how to handle files in Python.
+## Opening a File
+Before we can perform any operations on a file, we must first open it. Python provides the open() function to open a file. It takes two arguments: the name of the file and the mode in which the file should be opened. The mode can be 'r' for reading, 'w' for writing, or 'a' for appending.
+
+Here's an example of how to open a file for reading:
+```python
+f = open('myfile.txt', 'r')
+```
+By default, the open() function returns a file object that can be used to read from or write to the file, depending on the mode.
+## Modes in file
+There are various modes in which we can open files.
+
+1. read (r): This mode opens the file for reading only and gives an error if the file does not exist. This is the default mode if no mode is passed as a parameter.
+2. write (w): This mode opens the file for writing only and creates a new file if the file does not exist.
+3. append (a): This mode opens the file for appending only and creates a new file if the file does not exist.
+4. create (x): This mode creates a file and gives an error if the file already exists.
+ 
+5. text (t): 
+Apart from these modes we also need to specify how the file must be handled. t mode is used to handle text files. t refers to the text mode. There is no difference between r and rt or w and wt since text mode is the default. The default mode is 'r' (open for reading text, synonym of 'rt' ).
+6. binary (b): used to handle binary files (images, pdfs, etc).
+## Reading from a File
+Once we have a file object, we can use various methods to read from the file.
+
+The read() method reads the entire contents of the file and returns it as a string.
+```python 
+f = open('myfile.txt', 'r')
+contents = f.read()
+print(contents)
+```
+
+
+## Writing to a File
+To write to a file, we first need to open it in write mode.
+```python
+f = open('myfile.txt', 'w')
+
+```
+We can then use the write() method to write to the file.
+```python
+f = open('myfile.txt', 'w')
+f.write('Hello, world!')
+
+```
+Keep in mind that writing to a file will overwrite its contents. If you want to append to a file instead of overwriting it, you can open it in append mode.
+
+```python 
+f = open('myfile.txt', 'a')
+f.write('Hello, world!')
+```
+## Closing a File
+It is important to close a file after you are done with it. This releases the resources used by the file and allows other programs to access it.
+
+To close a file, you can use the close() method.
+```python 
+f = open('myfile.txt', 'r')
+# ... do something with the file
+f.close()
+
+```
+## The 'with' statement
+Alternatively, you can use the with statement to automatically close the file after you are done with it.
+
+```python
+with open('myfile.txt', 'r') as f:
+    # ... do something with the file
+
+```
+
+<br>
+
+# Day 50 - read(), readlines() and other methods
+# readlines() method
+The readline() method reads a single line from the file. If we want to read multiple lines, we can use a loop.
+
+```python
+f = open('myfile.txt', 'r')
+while True:
+    line = f.readline()
+    if not line:
+        break
+    print(line)
+
+```
+The readlines() method reads all the lines of the file and returns them as a list of strings.
+
+# writelines() method
+The writelines() method in Python writes a sequence of strings to a file. The sequence can be any iterable object, such as a list or a tuple.
+
+Here's an example of how to use the writelines() method:
+```python
+f = open('myfile.txt', 'w')
+lines = ['line 1\n', 'line 2\n', 'line 3\n']
+f.writelines(lines)
+f.close()
+```
+This will write the strings in the lines list to the file myfile.txt. The \n characters are used to add newline characters to the end of each string.
+
+Keep in mind that the writelines() method does not add newline characters between the strings in the sequence. If you want to add newlines between the strings, you can use a loop to write each string separately:
+```python
+f = open('myfile.txt', 'w')
+lines = ['line 1', 'line 2', 'line 3']
+for line in lines:
+    f.write(line + '\n')
+f.close()
+```
+It is also a good practice to close the file after you are done with it.
+
+<br>
+
+# Day 51 - seek() and tell() functions
+In Python, the seek() and tell() functions are used to work with file objects and their positions within a file. These functions are part of the built-in io module, which provides a consistent interface for reading and writing to various file-like objects, such as files, pipes, and in-memory buffers.
+## seek() function
+The seek() function allows you to move the current position within a file to a specific point. The position is specified in bytes, and you can move either forward or backward from the current position. For example:
+```python
+with open('file.txt', 'r') as f:
+  # Move to the 10th byte in the file
+  f.seek(10)
+
+  # Read the next 5 bytes
+  data = f.read(5)
+```
+## tell() function
+The tell() function returns the current position within the file, in bytes. This can be useful for keeping track of your location within the file or for seeking to a specific position relative to the current position. For example:
+
+```python
+with open('file.txt', 'r') as f:
+  # Read the first 10 bytes
+  data = f.read(10)
+
+  # Save the current position
+  current_position = f.tell()
+
+  # Seek to the saved position
+  f.seek(current_position)
+```
+## truncate() function
+When you open a file in Python using the open function, you can specify the mode in which you want to open the file. If you specify the mode as 'w' or 'a', the file is opened in write mode and you can write to the file. However, if you want to truncate the file to a specific size, you can use the truncate function.
+
+Here is an example of how to use the truncate function:
+
+```python
+with open('sample.txt', 'w') as f:
+  f.write('Hello World!')
+  f.truncate(5)
+
+with open('sample.txt', 'r') as f:
+  print(f.read())
+
+```
+
+<br>
+
+# Day 52 - Lambda Functions in Python
+In Python, a lambda function is a small anonymous function without a name. It is defined using the lambda keyword and has the following syntax:
+
+```python
+lambda arguments: expression
+```
+Lambda functions are often used in situations where a small function is required for a short period of time. They are commonly used as arguments to higher-order functions, such as map, filter, and reduce.
+
+Here is an example of how to use a lambda function:
+
+```python
+# Function to double the input
+def double(x):
+  return x * 2
+
+# Lambda function to double the input
+lambda x: x * 2
+```
+The above lambda function has the same functionality as the double function defined earlier. However, the lambda function is anonymous, as it does not have a name.
+
+Lambda functions can have multiple arguments, just like regular functions. Here is an example of a lambda function with multiple arguments:
+
+```python
+# Function to calculate the product of two numbers
+def multiply(x, y):
+    return x * y
+
+# Lambda function to calculate the product of two numbers
+lambda x, y: x * y
+```
+Lambda functions can also include multiple statements, but they are limited to a single expression. For example:
+
+```python
+# Lambda function to calculate the product of two numbers,
+# with additional print statement
+lambda x, y: print(f'{x} * {y} = {x * y}')
+```
+In the above example, the lambda function includes a print statement, but it is still limited to a single expression.
+
+Lambda functions are often used in conjunction with higher-order functions, such as map, filter, and reduce which we will look into later.
+
+<br>
+
+# Day 53 - Map, Filter and Reduce in Python 
+In Python, the map, filter, and reduce functions are built-in functions that allow you to apply a function to a sequence of elements and return a new sequence. These functions are known as higher-order functions, as they take other functions as arguments.
+
+## map
+The map function applies a function to each element in a sequence and returns a new sequence containing the transformed elements. The map function has the following syntax:
+
+```python
+map(function, iterable)
+```
+The function argument is a function that is applied to each element in the iterable argument. The iterable argument can be a list, tuple, or any other iterable object.
+
+Here is an example of how to use the map function:
+
+```python
+# List of numbers
+numbers = [1, 2, 3, 4, 5]
+
+# Double each number using the map function
+doubled = map(lambda x: x * 2, numbers)
+
+# Print the doubled numbers
+print(list(doubled))
+```
+In the above example, the lambda function lambda x: x * 2 is used to double each element in the numbers list. The map function applies the lambda function to each element in the list and returns a new list containing the doubled numbers.
+
+## filter
+The filter function filters a sequence of elements based on a given predicate (a function that returns a boolean value) and returns a new sequence containing only the elements that meet the predicate. The filter function has the following syntax:
+
+```python
+filter(predicate, iterable)
+```
+The predicate argument is a function that returns a boolean value and is applied to each element in the iterable argument. The iterable argument can be a list, tuple, or any other iterable object.
+
+Here is an example of how to use the filter function:
+
+```python
+# List of numbers
+numbers = [1, 2, 3, 4, 5]
+
+# Get only the even numbers using the filter function
+evens = filter(lambda x: x % 2 == 0, numbers)
+
+# Print the even numbers
+print(list(evens))
+```
+In the above example, the lambda function lambda x: x % 2 == 0 is used to filter the numbers list and return only the even numbers. The filter function applies the lambda function to each element in the list and returns a new list containing only the even numbers.
+
+## reduce
+The reduce function is a higher-order function that applies a function to a sequence and returns a single value. It is a part of the functools module in Python and has the following syntax:
+```python
+reduce(function, iterable)
+```
+The function argument is a function that takes in two arguments and returns a single value. The iterable argument is a sequence of elements, such as a list or tuple.
+
+The reduce function applies the function to the first two elements in the iterable and then applies the function to the result and the next element, and so on. The reduce function returns the final result.
+
+Here is an example of how to use the reduce function:
+
+```python
+from functools import reduce
+
+# List of numbers
+numbers = [1, 2, 3, 4, 5]
+
+# Calculate the sum of the numbers using the reduce function
+sum = reduce(lambda x, y: x + y, numbers)
+
+# Print the sum
+print(sum)
+```
+In the above example, the reduce function applies the lambda function lambda x, y: x + y to the elements in the numbers list. The lambda function adds the two arguments x and y and returns the result. The reduce function applies the lambda function to the first two elements in the list (1 and 2), then applies the function to the result (3) and the next element (3), and so on. The final result is the sum of all the elements in the list, which is 15.
+
+It is important to note that the reduce function requires the functools module to be imported in order to use it.
+
+<br>
+
+# Day 54 - 'is' vs '==' in Python
+In Python, is and == are both comparison operators that can be used to check if two values are equal. However, there are some important differences between the two that you should be aware of.
+
+The is operator compares the identity of two objects, while the == operator compares the values of the objects. This means that is will only return True if the objects being compared are the exact same object in memory, while == will return True if the objects have the same value.
+
+For example:
+
+```python
+a = [1, 2, 3]
+b = [1, 2, 3]
+
+print(a == b)  # True
+print(a is b)  # False
+```
+In this case, a and b are two separate lists that have the same values, so == returns True. However, a and b are not the same object in memory, so is returns False.
+
+One important thing to note is that, in Python, strings and integers are immutable, which means that once they are created, their value cannot be changed. This means that, for strings and integers, is and == will always return the same result:
+
+```python
+a = "hello"
+b = "hello"
+
+print(a == b)  # True
+print(a is b)  # True
+
+a = 5
+b = 5
+
+print(a == b)  # True
+print(a is b)  # True
+```
+In these cases, a and b are both pointing to the same object in memory, so is and == both return True.
+
+For mutable objects such as lists and dictionaries, is and == can behave differently. In general, you should use == when you want to compare the values of two objects, and use is when you want to check if two objects are the same object in memory.
+
+I hope this helps clarify the difference between is and == in Python!
+
+<br>
+
+# Day 55 - Snake Water Gun
+Snake, Water and Gun is a variation of the children's game "rock-paper-scissors" where players use hand gestures to represent a snake, water, or a gun. The gun beats the snake, the water beats the gun, and the snake beats the water.
+Write a python program to create a Snake Water Gun game in Python using if-else statements. Do not create any fancy GUI. Use proper functions to check for win.
+
+<br>
+
+# Day 56 - Introduction to Object-oriented programming in Python
+Introduction to Object-Oriented Programming in Python: In programming languages, mainly there are two approaches that are used to write program or code.
+- 1). Procedural Programming
+- 2). Object-Oriented Programming
+
+The procedure we are following till now is the “Procedural Programming” approach. So, in this session, we will learn about Object Oriented Programming (OOP).
+The basic idea of object-oriented programming (OOP) in Python is to use classes and objects to represent real-world concepts and entities.
+
+A class is a blueprint or template for creating objects. It defines the properties and methods that an object of that class will have. Properties are the data or state of an object, and methods are the actions or behaviors that an object can perform.
+
+An object is an instance of a class, and it contains its own data and methods. For example, you could create a class called "Person" that has properties such as name and age, and methods such as speak() and walk(). Each instance of the Person class would be a unique object with its own name and age, but they would all have the same methods to speak and walk.
+
+One of the key features of OOP in Python is encapsulation, which means that the internal state of an object is hidden and can only be accessed or modified through the object's methods. This helps to protect the object's data and prevent it from being modified in unexpected ways.
+
+Another key feature of OOP in Python is inheritance, which allows new classes to be created that inherit the properties and methods of an existing class. This allows for code reuse and makes it easy to create new classes that have similar functionality to existing classes.
+
+Polymorphism is also supported in Python, which means that objects of different classes can be treated as if they were objects of a common class. This allows for greater flexibility in code and makes it easier to write code that can work with multiple types of objects.
+
+In summary, OOP in Python allows developers to model real-world concepts and entities using classes and objects, encapsulate data, reuse code through inheritance, and write more flexible code through polymorphism.
+ 
+<br>
+
+# Day 57 - Classes and Objects in Python
+# Python Class and Objects
+A class is a blueprint or a template for creating objects, providing initial values for state (member variables or attributes), and implementations of behavior (member functions or methods). The user-defined objects are created using the class keyword.
+ 
+
+## Creating a Class:
+Let us now create a class using the class keyword.
+ 
+```python
+class Details:
+    name = "Rohan"
+    age = 20
+ ```
+
+## Creating an Object:
+Object is the instance of the class used to access the properties of the class
+Now lets create an object of the class.
+
+### Example:
+```python
+obj1 = Details() 
+```
+
+Now we can print values:
+
+### Example:
+```python
+class Details:
+    name = "Rohan"
+    age = 20
+
+obj1 = Details()
+print(obj1.name)
+print(obj1.age)
+```
+### Output:
+```
+Rohan
+20
+```
+# self parameter
+The self parameter is a reference to the current instance of the class, and is used to access variables that belongs to the class.
+
+It must be provided as the extra parameter inside the method definition. 
+
+ 
+
+## Example:
+```python
+class Details:
+    name = "Rohan"
+    age = 20
+
+    def desc(self):
+        print("My name is", self.name, "and I'm", self.age, "years old.")
+
+obj1 = Details()
+obj1.desc()
+ 
+```
+## Output:
+```
+My name is Rohan and I'm 20 years old.
+```
+
+<br>
+
+# Day 58 - Constructors in Python
+A constructor is a special method in a class used to create and initialize an object of a class. There are different types of constructors. Constructor is invoked automatically when an object of a class is created.
+
+A constructor is a unique function that gets called automatically when an object is created of a class. 
+The main purpose of a constructor is to initialize or assign values to the data members of that class. It cannot return any value other than None.
+## Syntax of Python Constructor
+```python
+def __init__(self):
+	# initializations
+ ```
+init is one of the reserved functions in Python. In Object Oriented Programming, it is known as a constructor.
+
+ ## Types of Constructors in Python
+1. Parameterized Constructor
+2. Default Constructor
+  
+### Parameterized Constructor in Python
+When the constructor accepts arguments along with self, it is known as parameterized constructor.
+
+These arguments can be used inside the class to assign the values to the data members. 
+#### Example:
+``` python
+class Details:
+    def __init__(self, animal, group):
+        self.animal = animal
+        self.group = group
+
+obj1 = Details("Crab", "Crustaceans")
+print(obj1.animal, "belongs to the", obj1.group, "group.")
+```
+#### Output:
+```
+Crab belongs to the Crustaceans group.
+```
+### Default Constructor in Python
+When the constructor doesn't accept any arguments from the object and has only one argument, self, in the constructor, it is known as a Default constructor.
+#### Example:
+```python
+class Details:
+  def __init__(self):
+    print("animal Crab belongs to Crustaceans group")
+obj1=Details()
+```
+#### Output:
+```
+animal Crab belongs to Crustaceans group
+```
+
+<br>
+
+# Day 59 - Decorators in Python
+Python decorators are a powerful and versatile tool that allow you to modify the behavior of functions and methods. They are a way to extend the functionality of a function or method without modifying its source code.
+
+A decorator is a function that takes another function as an argument and returns a new function that modifies the behavior of the original function. The new function is often referred to as a "decorated" function. The basic syntax for using a decorator is the following:
+```python
+@decorator_function
+def my_function():
+    pass
+```
+
+The @decorator_function notation is just a shorthand for the following code:
+```python
+def my_function():
+    pass
+my_function = decorator_function(my_function)
+```
+Decorators are often used to add functionality to functions and methods, such as logging, memoization, and access control.
+
+## Practical use case
+One common use of decorators is to add logging to a function. For example, you could use a decorator to log the arguments and return value of a function each time it is called:
+```python
+import logging
+
+def log_function_call(func):
+    def decorated(*args, **kwargs):
+        logging.info(f"Calling {func.__name__} with args={args}, kwargs={kwargs}")
+        result = func(*args, **kwargs)
+        logging.info(f"{func.__name__} returned {result}")
+        return result
+    return decorated
+
+@log_function_call
+def my_function(a, b):
+    return a + b
+```
+
+In this example, the log_function_call decorator takes a function as an argument and returns a new function that logs the function call before and after the original function is called.
+
+## Conclusion
+Decorators are a powerful and flexible feature in Python that can be used to add functionality to functions and methods without modifying their source code. They are a great tool for separating concerns, reducing code duplication, and making your code more readable and maintainable.
+
+In conclusion, python decorators are a way to extend the functionality of functions and methods, by modifying its behavior without modifying the source code. They are used for a variety of purposes, such as logging, memoization, access control, and more. They are a powerful tool that can be used to make your code more readable, maintainable, and extendable.
+
+<br>
+
+# Day 60 - Getters and Setters in Python 
+# Getters
+Getters in Python are methods that are used to access the values of an object's properties. They are used to return the value of a specific property, and are typically defined using the @property decorator.
+Here is an example of a simple class with a getter method:
+```python
+class MyClass:
+    def __init__(self, value):
+        self._value = value
+
+    @property
+    def value(self):
+        return self._value
+```
+In this example, the MyClass class has a single property, _value, which is initialized in the __init__ method. The value method is defined as a getter using the @property decorator, and is used to return the value of the _value property.
+
+To use the getter, we can create an instance of the MyClass class, and then access the value property as if it were an attribute:
+```python
+>>> obj = MyClass(10)
+>>> obj.value
+10
+```
+# Setters
+It is important to note that the getters do not take any parameters and we cannot set the value through getter method.For that we need setter method which can be added by decorating method with @property_name.setter
+
+Here is an example of a class with both getter and setter:
+
+```python
+class MyClass:
+    def __init__(self, value):
+        self._value = value
+
+    @property
+    def value(self):
+        return self._value
+
+    @value.setter
+    def value(self, new_value):
+        self._value = new_value
+```
+We can use setter method like this:
+```python
+>>> obj = MyClass(10)
+>>> obj.value = 20
+>>> obj.value
+20
+```
+In conclusion, getters are a convenient way to access the values of an object's properties, while keeping the internal representation of the property hidden. This can be useful for encapsulation and data validation.
+
+<br>
+
+# Day 61 - Inheritance in python
+When a class derives from another class. The child class will inherit all the public and protected properties and methods from the parent class. In addition, it can have its own properties and methods,this is called as inheritance.
+## Python Inheritance Syntax
+```python
+class BaseClass:
+  Body of base class
+class DerivedClass(BaseClass):
+  Body of derived class
+  ```
+Derived class inherits features from the base class where new features can be added to it. This results in re-usability of code.
+## Types of inheritance:
+1. Single inheritance
+2. Multiple inheritance
+3. Multilevel inheritance
+4. Hierarchical Inheritance
+5. Hybrid Inheritance
+
+We will see the explaination and example of each type of inheritance in the later tutorials
+
+##  Single Inheritance: 
+Single inheritance enables a derived class to inherit properties from a single parent class, thus enabling code reusability and the addition of new features to existing code.
+### Example:
+```python
+class Parent:
+    def func1(self):
+        print("This function is in parent class.")
+ 
+class Child(Parent):
+    def func2(self):
+        print("This function is in child class.")
+ 
+object = Child()
+object.func1()
+object.func2()
+```
+### Output:
+```
+This function is in parent class.
+This function is in child class.
+```
+## Multiple Inheritance: 
+When a class can be derived from more than one base class this type of inheritance is called multiple inheritances. In multiple inheritances, all the features of the base classes are inherited into the derived class. 
+### Example:
+```python
+class Mother:
+    mothername = ""
+ 
+    def mother(self):
+        print(self.mothername)
+ 
+ 
+class Father:
+    fathername = ""
+ 
+    def father(self):
+        print(self.fathername)
+ 
+ 
+class Son(Mother, Father):
+    def parents(self):
+        print("Father name is :", self.fathername)
+        print("Mother :", self.mothername)
+s1 = Son()
+s1.fathername = "Mommy"
+s1.mothername = "Daddy"
+s1.parents()
+```
+### Output:
+```
+Father name is : Mommy
+Mother name is : Daddy
+```
+## Multilevel Inheritance :
+In multilevel inheritance, features of the base class and the derived class are further inherited into the new derived class. This is similar to a relationship representing a child and a grandfather. 
+### Example:
+```python
+class Grandfather:
+ 
+    def __init__(self, grandfathername):
+        self.grandfathername = grandfathername
+ 
+ 
+class Father(Grandfather):
+    def __init__(self, fathername, grandfathername):
+        self.fathername = fathername
+        Grandfather.__init__(self, grandfathername)
+class Son(Father):
+    def __init__(self, sonname, fathername, grandfathername):
+        self.sonname = sonname
+        Father.__init__(self, fathername, grandfathername)
+ 
+    def print_name(self):
+        print('Grandfather name :', self.grandfathername)
+        print("Father name :", self.fathername)
+        print("Son name :", self.sonname)
+s1 = Son('Prince', 'Rampal', 'Lal mani')
+print(s1.grandfathername)
+s1.print_name()
+```
+### Output:
+```
+George
+Grandfather name : George
+Father name : Philip
+Son name : Charles
+```
+## Hierarchical Inheritance: 
+When more than one derived class are created from a single base this type of inheritance is called hierarchical inheritance. In this program, we have a parent (base) class and two child (derived) classes.
+### Example:
+```python
+class Parent:
+    def func1(self):
+        print("This function is in parent class.")
+
+class Child1(Parent):
+    def func2(self):
+        print("This function is in child 1.")
+      
+class Child2(Parent):
+    def func3(self):
+        print("This function is in child 2.")
+ 
+ object1 = Child1()
+object2 = Child2()
+object1.func1()
+object1.func2()
+object2.func1()
+object2.func3()
+```
+### Output:
+```
+This function is in parent class.
+This function is in child 1.
+This function is in parent class.
+This function is in child 2.
+```
+## Hybrid Inheritance: 
+Inheritance consisting of multiple types of inheritance is called hybrid inheritance.
+### Example
+```python
+class School:
+    def func1(self):
+        print("This function is in school.")
+ 
+ 
+class Student1(School):
+    def func2(self):
+        print("This function is in student 1. ")
+ 
+ 
+class Student2(School):
+    def func3(self):
+        print("This function is in student 2.")
+ 
+ 
+class Student3(Student1, School):
+    def func4(self):
+        print("This function is in student 3.")
+ 
+object = Student3()
+object.func1()
+object.func2()
+```
+### Output:
+```
+This function is in school.
+This function is in student 1.
+````
 
 
 
